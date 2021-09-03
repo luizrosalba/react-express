@@ -15,3 +15,20 @@ export async function serverAlive() {
         throw e;      
     }
 }
+
+export const promise = new Promise( (resolve, reject) => {
+    try {
+        return api.get("/isAlive").then (
+            (res) => 
+            {   if (res.data==="Server Alive") {
+                    resolve(true)
+                }else{
+                    reject(false)
+                }
+            })
+    } catch(e) {
+        console.log("Failed to require service");
+        throw e;      
+    }
+})
+

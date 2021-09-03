@@ -17,6 +17,15 @@ const App = () => {
           setAlive(result)
         }
       )
+
+      req.promise.then( resultado => {
+          console.log("Usando promise", resultado); 
+        }, 
+        erro => {
+          console.log(erro); 
+        }
+      );
+    
   }, [])
 
   return (
