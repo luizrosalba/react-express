@@ -1,6 +1,14 @@
 # react-express
 A react-node-express SPA good for starting a Full Stack project. 
 
+## Starting Front-End : 
+
+- npm run start
+
+## Starting Back-End : 
+
+- npm run dev 
+
 Front-end: 
 A react create-react-app with a simple API call:  
 - A generic react folder organization
