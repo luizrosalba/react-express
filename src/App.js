@@ -3,6 +3,7 @@ import logo from './logo.svg';
 
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
 
 import * as req from "./api/AppRequests";
 import './App.css';
@@ -36,9 +37,10 @@ const App = () => {
           :
           <div>Server not Alive </div>
         }
-    
+      <>
+        <Button variant="primary">React Bootstrap is On! </Button>{' '}
+      </>     
       </header>
-      
     </div>
   );
 }
