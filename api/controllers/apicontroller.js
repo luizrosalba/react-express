@@ -12,20 +12,20 @@ class ApiController {
                 throw new HttpException(404, 'example not found');
             });
         }
-        res.send(licenses);
+        res.send(example);
     };
     
     getOne = async (req, res) => {
         const {
             id
         } = req.body
-        let user = ''
-        if (id)
-            user = await ApiModel.findOne({ 
-                id: id},
-                "table_example"
+        let output = ''
+        if (true)
+            output = await ApiModel.findOne({ 
+                actor_id: 1},
+                "actor"
             );
-        return user;
+        return(output);
     };
 
 }

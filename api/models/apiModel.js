@@ -1,4 +1,4 @@
-//const query = require('../db/db-connections');
+const query = require('../db/db-connections');
 const { multipleColumnSet } = require('../utils/common.utils');
 /// sql commands
 class ApiModel {

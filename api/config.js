@@ -1,15 +1,16 @@
-///dev 
+/// all configs - dev from config prod from system vars
 const env = process.env; 
+
 const config = {
   db: { 
-    host: env.DB_HOST,
-    user: env.DB_USER,
-    password: env.DB_PASSWORD,
-    database: env.DB_DATABASE,
-    waitForConnections: true,
-    port: env.DB_PORT,
-    connectionLimit: 1000, 
-    debug: env.DB_DEBUG || true
+    host: env.REACT_APP_host,
+    user: env.REACT_APP_user,
+    password: env.REACT_APP_password,
+    database: env.REACT_APP_database,
+    waitForConnections: env.REACT_APP_waitForConnections,
+    port: env.REACT_APP_port,
+    connectionLimit: env.REACT_APP_connectionLimit, 
+    debug: env.REACT_APP_debug
   },
 };
 module.exports = config;

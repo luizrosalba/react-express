@@ -5,6 +5,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 bodyParser = require('body-parser');
 const app = require('express')();
+require('dotenv/config');
 
 var indexRouter = require('./routes/index');
 

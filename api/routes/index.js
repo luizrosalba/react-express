@@ -3,9 +3,9 @@ router = express.Router();
 const apiController = require('../controllers/apicontroller');
 
 var path = require('path');
+const fs = require("fs")
 //const uuid = require("uuid");
 //const multer = require("multer");
-const fs = require("fs")
 
 
 /////////////////////
@@ -24,6 +24,14 @@ router.use(function timeLog(req, res, next) {
 
 // verificar se o servidor está online 
 router.get('/isAlive', function(req, res) {
+  res.status(200).send('Server Alive');
+});
+
+// rota exemplo de controlador
+router.get('/exemplo', function(req, res) {
+  apiController.getOne(req, res).then(
+    (ans)=> console.log(ans)
+  )
   res.status(200).send('Server Alive');
 });
 
