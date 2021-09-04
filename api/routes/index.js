@@ -30,9 +30,10 @@ router.get('/isAlive', function(req, res) {
 // rota exemplo de controlador
 router.get('/exemplo', function(req, res) {
   apiController.getOne(req, res).then(
-    (ans)=> console.log(ans)
+    (ans)=> 
+      res.status(200).send(ans)
   )
-  res.status(200).send('Server Alive');
+  res.status(505)
 });
 
 // For invalid routes MUST be last function 

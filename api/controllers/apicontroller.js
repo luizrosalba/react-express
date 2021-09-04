@@ -18,11 +18,11 @@ class ApiController {
     getOne = async (req, res) => {
         const {
             id
-        } = req.body
+        } = req.body /// x-www-form-urlencoded 
         let output = ''
-        if (true)
+        if (id)
             output = await ApiModel.findOne({ 
-                actor_id: 1},
+                actor_id: id},
                 "actor"
             );
         return(output);
