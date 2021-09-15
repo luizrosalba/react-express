@@ -12,8 +12,8 @@ const App = () => {
   const [alive, setAlive] = useState(false);
 
   useEffect(() => {
-      let temp = req.serverAlive();
-      temp.then(
+      let serverAliveReq = req.serverAlive();
+      serverAliveReq.then(
         result => {
           setAlive(result)
         }
