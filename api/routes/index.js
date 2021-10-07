@@ -1,4 +1,7 @@
-const express = require('express');
+require("dotenv-safe").config();
+const jwt = require('jsonwebtoken');
+const express= require('express');
+const verifyJWT= require('../middlewares/verifyJWT')
 router = express.Router();
 const apiController = require('../controllers/apicontroller');
 
@@ -26,6 +29,41 @@ router.use(function timeLog(req, res, next) {
 router.get('/isAlive', function(req, res) {
   res.status(200).send('Server Alive');
 });
+
+//authentication
+router.post('/login', (req, res, next) => {
+    //esse teste abaixo deve ser feito no seu banco de dados
+    if(req.body.user === 'luiz' && req.body.password === '123'){
+      //auth ok
+      const id = 1; //esse id viria do banco de dados
+      const token = jwt.sign({ id }, process.env.SECRET, {
+        expiresIn: 300 // expires in 5min
+      });
+      return res.json({ auth: true, token: token });
+    }
+    res.status(500).json({message: 'Login inválido!'});
+})
+
+///Se quiser adicionar uma camada a mais de segurança, 
+///você pode ter uma blacklist de tokens que fizeram logout, 
+//para impedir reuso deles depois do logout realizado.
+
+/// Aqui apenas dizemos ao requisitante para anular o token, 
+///embora esta rota de logout seja completamente opcional uma 
+///vez que no próprio client-side é possível destruir o cookie ou 
+//localstorage de autenticação e com isso o usuário está automaticamente
+// deslogado. Se nem o client-side ou o server-side destrua o token, ele irá expirar sozinho em 5 minutos.
+
+router.post('/logout', function(req, res) {
+    res.json({ auth: false, token: null });
+})
+
+/// protected route 
+router.get('/clientes', verifyJWT, (req, res, next) => { 
+    console.log("Retornou todos clientes!");
+    res.json([{id:1,nome:'luiz'}]);
+})
+
 
 // For invalid routes MUST be last function 
 router.get('*', (req, res) => {
