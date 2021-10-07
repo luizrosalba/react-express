@@ -11,6 +11,10 @@ import './App.css';
 const App = () => {
   const [alive, setAlive] = useState(false);
 
+  const handleClick = () =>{
+    alert("Clicked");
+  } 
+
   useEffect(() => {
       let temp = req.serverAlive();
       temp.then(
@@ -38,7 +42,7 @@ const App = () => {
           <div>Server not Alive </div>
         }
       <>
-        <Button variant="primary">React Bootstrap is On! </Button>{' '}
+        <Button variant="primary" onClick={handleClick}>React Bootstrap is On! </Button>
       </>     
       </header>
     </div>

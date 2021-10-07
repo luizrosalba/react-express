@@ -18,7 +18,7 @@ router.use(function timeLog(req, res, next) {
   let day = new Date().getDate();
   let month = new Date().getMonth();
   let year = new Date().getFullYear();
-  console.log('Time: ', day,'/', month,'/', year, fullTime, req.method, req.url );
+  console.log('Time: ', day,'/', month+1 ,'/', year, fullTime, req.method, req.url );
   next();
 });
 
